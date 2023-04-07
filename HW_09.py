@@ -30,28 +30,28 @@ def good_bye(*args):
     return 'Good bye!'
 
 
-def exit(*args):
-    return 'Good bye!'
+# def exit(*args):
+#     return 'Good bye!'
 
 
-def close(*args):
-    return 'Good bye!'
+# def close(*args):
+#     return 'Good bye!'
 
 
 def no_command(*args):
     return "Unknown command, try again"
 
 
-COMMANDS = {hello: 'hello',
-            add: 'add',
-            good_bye: 'good bye',
-            exit: 'exit',
-            close: 'close'
+COMMANDS = {'hello': hello,
+            'add': add,
+            'good bye': good_bye,
+            'exit': good_bye,
+            'close': good_bye
 }
 
 
 def command_handler(text):
-    for command, kword in COMMANDS.items():
+    for kword, command in COMMANDS.items():
         if text.startswith(kword):
             return command, text.replace(kword, '').strip()
     return no_command, None
@@ -64,7 +64,7 @@ def main():
         user_input = input(">>>")
         command, data = command_handler(user_input)
         print(command(data))
-        if command == 'exit' or 'close' or 'good bye':
+        if command == good_bye:
             break
             
 
